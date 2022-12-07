@@ -26,5 +26,18 @@ fun main() {
 }
 
 fun calculateCaloriesPartTwo(input: String, count: Int): Int {
-    TODO()
+    val sortedResultList = getSortedResults(input)
+    return sortedResultList.subList(0, count).sum()
+
+}
+
+private fun getSortedResults(inputData: String): List<Int> {
+    val splitInputData: List<String> = inputData.split("\n\n")
+    val resultList = mutableListOf(0)
+    for (i in splitInputData) {
+        val splitInputDataSingle: List<String> = i.split("\n")
+        val splitInputDataSingleInts = splitInputDataSingle.map { it.toInt() }
+        resultList.add(splitInputDataSingleInts.sum())
+    }
+    return resultList.sortedDescending()
 }
